@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #212121;
+  color: white;
+}
+
+/* container */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#restartBtn {
+  outline: none;
+  border: none;
+  padding: 20px 50px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+}
+/* underline effect */
+#restartBtn::after,
+#restartBtn::before {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: -10px;
+  transform: translateX(10px);
+  right: 0;
+  width: 0px;
+  height: 2px;
+  display: block;
+  background: white;
+  transition: all 300ms ease-in-out;
+}
+
+#restartBtn::before {
+  bottom: 0;
+  right: 0;
+  left: auto;
+  transform: translateX(0px);
+}
+
+#restartBtn:hover::after,
+#restartBtn:hover::before {
+  width: 100%;
+}
+/* up effect */
+#restartBtn span {
+  transition: all 300ms;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+}
+
+#restartBtn span::before {
+  content: "Restart";
+  font-size: 20px;
+  position: absolute;
+  transform: translateY(50px);
+  transition: all 300ms;
+}
+
+#restartBtn:hover span {
+  transform: translateY(-60px);
+}
+
+/* board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 500px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid whitesmoke;
+  position: relative;
+}
+.tile {
+  border: 1px solid grey;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tile svg {
+  width: 90%;
+  height: 90%;
+  stroke-opacity: 0.4;
+}
+
+.tile[state] svg {
+  stroke-opacity: 1;
+}
+.wrapper {
+  position: relative;
+}
+#overlay {
+  position: absolute;
+  inset: 0 0 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* spinner */
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #fff #fff transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent #ff3d00 #ff3d00;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

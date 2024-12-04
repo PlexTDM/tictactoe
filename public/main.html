@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./static/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+
+    <main>
+        <button id="createBtn" onclick="createRoom()">
+            Create Room
+        </button>
+        <button id="joinBtn">
+            Join Room
+        </button>
+
+        <div id="createModal" class="modal">
+            <span class="close">&times;</span>
+            <h1>Create Room</h1>
+            <div class="modal-content">
+                <input type="text" placeholder="Room Name" id="createName">
+                <span>
+                    <button>
+                        <img src="./static/img/x2.svg" alt="back">
+                    </button>
+                    <button onclick="createRoom()">
+                        <img src="./static/img/right.svg" alt="">
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div id="joinModal" class="modal">
+            <div class="title">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-content" id="activeRooms">
+                <form id="enterGame">
+                    <input id="code" type="text" pattern="[A-Za-z]*" minlength="4" maxlength="4" placeholder="Code"
+                        required>
+                    <button><input type="submit" hidden>Play</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+        integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+        crossorigin="anonymous"></script>
+    <script src="./static/main.js"></script>
+</body>
+
+</html>
